@@ -1,0 +1,105 @@
+/* ============================================================
+   TEMA ESPORTE: mais escuro, tipografia condensada em itálico,
+   cortes diagonais, cantos chanfrados e clima de estádio.
+   Carregado depois do style.css e sobrescreve o visual.
+   ============================================================ */
+:root {
+  --navy: #01040b; --navy2: #040c1d; --line: #10244a;
+  --gold: #ffc21a; --radius: 4px;
+  --display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+  --cut: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
+  --slant: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+}
+body {
+  background-color: #01040b;
+  background-image: radial-gradient(900px 520px at 88% -8%, #0d3a9038, transparent 65%), radial-gradient(700px 500px at -8% 35%, #08205a30, transparent 65%);
+}
+
+/* tipografia de placar */
+h1, h2, h3, .stats b, .who b, .pt-box b, .face.front h3 {
+  font-family: var(--display); font-style: italic; text-transform: uppercase; font-weight: 800; letter-spacing: .01em; line-height: .94;
+}
+h1 { font-size: clamp(3.4rem, 8.4vw, 7rem); }
+h2 { font-size: clamp(2.6rem, 5.4vw, 4.4rem); }
+em, .serif, .light em, .banner h2 em, .hero h1 em { font-family: var(--display); font-style: italic; font-weight: 800; color: var(--gold); letter-spacing: .01em; }
+.eyebrow { font: italic 700 1rem var(--display); letter-spacing: .24em; }
+.eyebrow::before { width: 34px; height: 4px; transform: skewX(-25deg); }
+.brand { font-family: var(--display); font-style: italic; text-transform: uppercase; font-size: 1.25rem; letter-spacing: .04em; }
+.nav { border-bottom: 2px solid #0f2a5c; background: #01040bea; }
+.nav nav a { font-family: var(--display); text-transform: uppercase; letter-spacing: .08em; font-size: 1.05rem; font-weight: 700; border-radius: 0; clip-path: polygon(9px 0, 100% 0, calc(100% - 9px) 100%, 0 100%); padding: 6px 18px; }
+.nav nav .fav-pill { border: 0; background: #ff4d6d22; }
+
+/* botões e chips inclinados */
+.btn, .chip { font-family: var(--display); font-weight: 800; text-transform: uppercase; letter-spacing: .08em; font-size: 1.08rem; border-radius: 0; clip-path: var(--slant); }
+.btn { padding: 13px 34px; box-shadow: none; background: linear-gradient(135deg, #2f7bff, #0f4bb5); }
+.btn:hover { box-shadow: none; filter: brightness(1.2); }
+.btn.ghost { background: #ffffff10; box-shadow: none; }
+.btn.gold { background: var(--gold); color: #1c1400; box-shadow: none; }
+.chip { font-size: .95rem; padding: 7px 20px; clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%); border: 0; background: #ffffff14; }
+.chip.on { background: var(--blue); }
+.chip.solid { background: var(--gold); }
+.tagline { border-radius: 0; font-family: var(--display); font-style: italic; letter-spacing: .12em; text-transform: uppercase; font-size: .95rem; clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%); border: 0; background: #ffc21a1c; padding: 6px 22px; }
+.meta li { border-radius: 0; font-family: var(--display); font-style: italic; text-transform: uppercase; letter-spacing: .08em; font-size: .95rem; border: 0; border-left: 3px solid var(--gold); background: #ffffff0a; }
+
+/* hero: luzes de estádio, listras diagonais e palavra fantasma */
+.hero { overflow: hidden; }
+.hero::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none; animation: lights 5s ease-in-out infinite;
+  background: conic-gradient(from 197deg at 14% -12%, transparent 0 14deg, #2f7bff40 22deg, transparent 32deg), conic-gradient(from 150deg at 86% -12%, transparent 0 14deg, #ffffff30 22deg, transparent 32deg);
+}
+.hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(115deg, transparent 0 46px, #ffffff06 46px 49px); }
+@keyframes lights { 0%, 100% { opacity: .75; } 45% { opacity: 1; } 50% { opacity: .55; } 55% { opacity: 1; } }
+.hero .wrap { position: relative; z-index: 1; }
+.hero .ghost { white-space: nowrap; position: absolute; right: -2%; top: 4%; z-index: 0; pointer-events: none; user-select: none; font: italic 800 clamp(9rem, 26vw, 22rem)/1 var(--display); color: transparent; -webkit-text-stroke: 2px #ffffff12; letter-spacing: -.02em; }
+.collage .pic { border-radius: 2px; }
+
+/* letreiro */
+.ticker { position: relative; z-index: 3; margin: 30px 0 -8px; background: var(--gold); color: #1c1400; transform: rotate(-1.4deg) scale(1.02); overflow: hidden; border-block: 3px solid #1c1400; }
+.ticker-track { display: flex; width: max-content; animation: tick 28s linear infinite; }
+.ticker-track span { white-space: pre; font: italic 800 1.35rem/1 var(--display); text-transform: uppercase; letter-spacing: .12em; padding: 10px 0; }
+@keyframes tick { to { transform: translateX(-50%); } }
+
+/* placar */
+.stats { border-radius: 0; background: #0b1f45; clip-path: var(--cut); }
+.stats div { background: #030a18; border-top: 4px solid var(--gold); padding: 26px 24px; }
+.stats b { font-size: 4rem; color: #fff; text-shadow: 0 0 22px #2f7bffaa; }
+.stats span { text-transform: uppercase; letter-spacing: .1em; font-size: .78rem; font-weight: 600; }
+
+/* cartões com canto chanfrado */
+.roll, .favs-box, .form, .channels, .chan, .banner, .sheet, .faq details { border-radius: 0; clip-path: var(--cut); }
+.steps li { border-radius: 4px; border-top: 4px solid var(--gold); }
+.steps li::before { border-radius: 0; font-family: var(--display); font-style: italic; font-size: 1rem; }
+.roll .no { border-radius: 0; font-family: var(--display); font-style: italic; letter-spacing: .16em; background: var(--gold); color: #1c1400; border: 0; font-size: .95rem; }
+.roll .info { border-left: 4px solid var(--gold); margin: 0 0 18px 18px; padding: 2px 14px; }
+.roll h3 { font-size: 2rem; }
+.roll .cnt { font-family: var(--display); font-style: italic; font-size: 1rem; letter-spacing: .1em; text-transform: uppercase; }
+.tile, .frame img, .portrait { border-radius: 2px; }
+.tile .fn, .ex { border-radius: 0; font-family: var(--display); font-style: italic; }
+.banner { background: linear-gradient(115deg, #0b3a99 0 46%, #041236 46% 100%); border: 0; }
+.banner::after { border-color: #ffffff0d; }
+.faq summary { font-family: var(--display); font-style: italic; text-transform: uppercase; font-size: 1.25rem; letter-spacing: .03em; }
+
+/* a faixa que era clara agora é escura, com corte diagonal */
+.light { background: linear-gradient(180deg, #030a18, #01040b); color: var(--text); clip-path: polygon(0 44px, 100% 0, 100% calc(100% - 44px), 0 100%); padding: 140px 0 150px; margin-top: 70px; }
+.light .eyebrow { color: var(--gold); }
+.light .eyebrow::before { background: var(--gold); }
+.light .sec-head p, .light .steps p { color: var(--muted); }
+.light .steps li { background: #050f26; border-color: #12305f; }
+
+/* cartas de equipamento */
+.face { border-radius: 4px; }
+.face.front { background: radial-gradient(400px 260px at 90% 0%, #2f7bff66, transparent 70%), repeating-linear-gradient(115deg, transparent 0 30px, #ffffff06 30px 32px), #030a18; border: 1px solid #12305f; }
+.face.front .badge { border-radius: 0; font-family: var(--display); font-style: italic; font-size: .95rem; clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%); padding: 3px 18px; }
+.face.front h3 { font-size: 3.1rem; }
+.face.back { background: #050f26; color: var(--text); border: 1px solid #12305f; }
+.face.back h4 { color: var(--gold); font-family: var(--display); font-style: italic; font-size: 1.1rem; }
+.face.back li { border-bottom: 1px dashed #1d3a75; }
+.face.back li span { color: var(--muted); }
+
+/* rodapé */
+.foot { background: #000208; border-top: 3px solid var(--gold); }
+.foot .quote { font: italic 800 1.7rem/1.1 var(--display); text-transform: uppercase; color: #fff; }
+.foot h4 { font-family: var(--display); font-style: italic; font-size: 1.05rem; }
+.pt-box b { letter-spacing: 0; }
+@media (max-width: 760px) { .hero .ghost { font-size: 9rem; top: 30%; } .stats b { font-size: 3rem; } }
+@media (prefers-reduced-motion: reduce) { .hero::before, .ticker-track { animation: none !important; } }
