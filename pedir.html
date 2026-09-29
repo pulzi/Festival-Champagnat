@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pedir fotos · Fotos do Festival Champagnat</title>
+<meta name="description" content="Peça suas fotos do Festival Champagnat. É de graça e chega por link do Google Fotos.">
+<meta name="theme-color" content="#05122b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%231257c9'/%3E%3Ccircle cx='50' cy='50' r='24' fill='%23fff'/%3E%3Ccircle cx='50' cy='50' r='10' fill='%2305122b'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>try{if(sessionStorage.getItem('iris'))document.documentElement.classList.add('iris-cover')}catch(e){}</script>
+</head>
+<body data-page="pedir">
+
+<main class="wrap sec" style="padding-top:56px">
+  <div class="sec-head">
+    <p class="eyebrow">Pedir fotos</p>
+    <h1 style="font-size:clamp(2.2rem,5vw,3.6rem)" data-split>É de graça, <em>chega por link</em>.</h1>
+    <p>Favorite no site ou descreva onde você estava. Eu respondo com um link do Google Fotos.</p>
+  </div>
+
+  <div class="favs-box" data-rv>
+    <h3 style="margin-bottom:6px">♥ Minhas favoritas <span class="mono small" id="fCount"></span></h3>
+    <p class="small" style="margin:0 0 14px">Elas ficam salvas só neste navegador.</p>
+    <div class="favs-strip" id="strip"></div>
+    <div class="cta" id="favActions" style="margin-top:6px">
+      <button class="btn" id="sendFavs">Enviar favoritas por e-mail</button>
+      <button class="btn ghost" id="clearFavs">Limpar</button>
+    </div>
+    <p id="favEmpty" class="small" hidden>Você ainda não favoritou nada. <a href="registros.html" style="color:var(--sky)">Ir aos registros →</a></p>
+  </div>
+
+  <div class="contact">
+    <form class="form" id="form" novalidate data-rv>
+      <h3>Não achou? Me conte.</h3>
+      <label>Seu nome<input name="nome" type="text" autocomplete="name" required placeholder="Como devo te chamar?"></label>
+      <label>Seu e-mail ou @ do Instagram<input name="contato" type="text" required placeholder="Para eu te responder"></label>
+      <label>Onde e quando foi?<input name="onde" type="text" placeholder="Ex.: perto do palco, no fim da tarde"></label>
+      <label>Como você estava?<textarea name="msg" rows="3" placeholder="Roupa, cor, com quem estava… qualquer detalhe ajuda."></textarea></label>
+      <button class="btn" type="submit">Enviar pedido</button>
+      <p class="small" id="formMsg" role="status" aria-live="polite" style="margin:0">Ao enviar, abre o seu app de e-mail com o pedido pronto.</p>
+    </form>
+    <div class="channels" data-rv>
+      <h3>Ou fale direto comigo</h3>
+      <a class="chan" id="lnkAlbum" href="#" target="_blank" rel="noopener" hidden><span class="ci">🖼️</span><span><b>Álbum no Google Fotos</b><small>Todas as fotos do festival</small></span><i>→</i></a>
+      <a class="chan" id="lnkIg" href="#" target="_blank" rel="noopener"><span class="ci">📸</span><span><b>Instagram</b><small>@<span data-cfg="instagram">leonardo.pulzi</span></small></span><i>→</i></a>
+      <a class="chan" id="lnkMail" href="#"><span class="ci">✉️</span><span><b>E-mail</b><small data-cfg="email">leonardopulzi@gmail.com</small></span><i>→</i></a>
+    </div>
+  </div>
+
+  <div class="sec-head" style="margin-top:96px" data-rv><p class="eyebrow">Dúvidas</p><h2>Perguntas <em>comuns</em>.</h2></div>
+  <div class="faq">
+    <details data-rv><summary>As fotos realmente são de graça?</summary><p>Sim. Não cobro nada e não tem pegadinha. É um projeto meu para o festival.</p></details>
+    <details data-rv><summary>Como eu recebo as fotos?</summary><p>Por um link do Google Fotos. Eu envio por e-mail ou Instagram, e você vê e baixa tudo por lá.</p></details>
+    <details data-rv><summary>Posso postar no meu Instagram?</summary><p>Pode, e vou adorar se me marcar. Só peço que não use as fotos para vender nada nem altere a imagem de outras pessoas.</p></details>
+    <details data-rv><summary>Não gostei de uma foto minha. E agora?</summary><p>Me avise por e-mail ou Instagram que eu tiro do site. Sem drama.</p></details>
+    <details data-rv><summary>Quando as fotos ficam prontas?</summary><p>Vou subindo aos poucos depois do festival, conforme eu for editando. Volte aqui ou me chame para saber.</p></details>
+  </div>
+</main>
+
+<script src="config.js"></script>
+<script src="fotos.js"></script>
+<script src="common.js"></script>
+<script src="cursor.js"></script>
+<script>
+(() => {
+  const { $, CFG, todas, toast } = FC;
+  const rotulo = (f) => `${(FC.data.albuns.find((a) => a.key === f.album) || {}).titulo || f.album} #${String(f.n).padStart(2, '0')}`;
+  const nome = (f) => f.exemplo ? `(exemplo) ${rotulo(f)}` : decodeURIComponent(f.src.replace(/^fotos\//, ''));
+
+  $('#lnkIg').href = 'https://instagram.com/' + encodeURIComponent(CFG.instagram || '');
+  $('#lnkMail').href = 'mailto:' + (CFG.email || '');
+  if (CFG.albumUrl) { $('#lnkAlbum').href = CFG.albumUrl; $('#lnkAlbum').hidden = false; }
+
+  function favList() { const s = new Set(FC.favs()); return todas.filter((f) => s.has(f.id)); }
+  function paint() {
+    const l = favList(), strip = $('#strip');
+    strip.textContent = '';
+    $('#fCount').textContent = l.length ? `· ${l.length} selecionada${l.length > 1 ? 's' : ''}` : '';
+    $('#favActions').hidden = !l.length; $('#favEmpty').hidden = !!l.length; strip.hidden = !l.length;
+    l.forEach((f) => {
+      const d = document.createElement('div'); d.className = 'f';
+      d.innerHTML = f.video ? `<video src="${f.src}#t=0.1" muted preload="metadata"></video>` : `<img src="${f.src}" alt="${rotulo(f)}">`;
+      const x = document.createElement('button'); x.type = 'button'; x.setAttribute('aria-label', 'Remover'); x.textContent = '✕';
+      x.onclick = () => FC.toggleFav(f.id);
+      d.appendChild(x); strip.appendChild(d);
+    });
+  }
+  document.addEventListener('favs', paint); paint();
+
+  $('#sendFavs').addEventListener('click', () => {
+    const l = favList();
+    const corpo = `Oi! Gostaria destas ${l.length} do ${CFG.evento || 'festival'}:\n\n${l.map((f) => '- ' + nome(f)).join('\n')}\n\nMeu nome: \nMeu contato: \n`;
+    location.href = `mailto:${CFG.email || ''}?subject=${encodeURIComponent('Pedido de fotos favoritas')}&body=${encodeURIComponent(corpo)}`;
+    toast('Abrindo seu app de e-mail…');
+  });
+  $('#clearFavs').addEventListener('click', () => { FC.favs().forEach((id) => FC.toggleFav(id)); });
+
+  const form = $('#form'), msg = $('#formMsg');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const d = new FormData(form), n = (d.get('nome') || '').trim(), c = (d.get('contato') || '').trim();
+    form.nome.classList.toggle('bad', !n); form.contato.classList.toggle('bad', !c);
+    if (!n || !c) { msg.textContent = 'Preencha seu nome e um contato para eu te responder.'; return; }
+    const fv = favList();
+    const corpo = `Oi! Sou ${n} (${c}).\n\nOnde e quando: ${d.get('onde') || '-'}\nComo eu estava: ${d.get('msg') || '-'}\n${fv.length ? '\nFavoritas:\n' + fv.map((f) => '- ' + nome(f)).join('\n') + '\n' : ''}`;
+    location.href = `mailto:${CFG.email || ''}?subject=${encodeURIComponent('Pedido de foto: ' + (CFG.evento || 'Festival'))}&body=${encodeURIComponent(corpo)}`;
+    msg.textContent = 'Abrindo seu app de e-mail. Se nada abrir, me chame pelo Instagram.';
+  });
+})();
+</script>
+</body>
+</html>

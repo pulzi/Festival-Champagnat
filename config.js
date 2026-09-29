@@ -1,6 +1,6 @@
 // ============================================================
-//  EDITE AQUI: é o único arquivo que você precisa mexer para
-//  trocar nome, contatos e data. O site inteiro lê daqui.
+//  EDITE AQUI: nome, contatos, data e nomes dos álbuns.
+//  O site inteiro lê daqui.
 // ============================================================
 window.CONFIG = {
   nome: 'Leonardo Pulzi',
@@ -10,5 +10,15 @@ window.CONFIG = {
   evento: 'Festival Champagnat',
   data: 'Data do festival',                   // ex.: 'Sábado, 18 de outubro'
   local: 'Colégio Marista Arquidiocesano',
-  albumUrl: '',                               // cole aqui o link do Google Photos quando o álbum estiver pronto
+  albumUrl: '',                               // link do Google Fotos com o álbum completo
+
+  // Cada subpasta de "fotos" vira um álbum. O nome da pasta (sem acento,
+  // minúsculo) escolhe o título abaixo. Pasta nova sem título aqui usa o nome dela.
+  albuns: {
+    palco:    { titulo: 'Palco e apresentações', emoji: '🎤', desc: 'Danças, bandas e tudo que rolou lá em cima.' },
+    barracas: { titulo: 'Barracas e comidas',    emoji: '🍿', desc: 'Fila, cheiro bom e muita gente feliz.' },
+    turma:    { titulo: 'Turma e retratos',      emoji: '👥', desc: 'A galera posando (ou fingindo que não).' },
+    momentos: { titulo: 'Momentos',              emoji: '✨', desc: 'Os cliques espontâneos que ninguém viu chegando.' },
+    videos:   { titulo: 'Vídeos GoPro',          emoji: '🎥', desc: 'O festival em movimento, de pertinho.' },
+  },
 };

@@ -4,255 +4,158 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fotos do Festival Champagnat</title>
-<meta name="description" content="Portfólio de fotos do Festival Champagnat, do Colégio Marista Arquidiocesano. Achou sua foto? É de graça.">
+<meta name="description" content="Portfólio de fotos e vídeos do Festival Champagnat, do Colégio Marista Arquidiocesano. Achou você? A foto é de graça.">
 <meta property="og:title" content="Fotos do Festival Champagnat">
-<meta property="og:description" content="Portfólio e fotos gratuitas do Festival Champagnat, do Colégio Marista Arquidiocesano.">
-<meta property="og:type" content="website">
-<meta name="theme-color" content="#0c0808">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23ff6a1f'/%3E%3Ccircle cx='50' cy='54' r='22' fill='%231a0703'/%3E%3Ccircle cx='50' cy='54' r='12' fill='%23ffc61a'/%3E%3Crect x='34' y='20' width='32' height='12' rx='4' fill='%231a0703'/%3E%3C/svg%3E">
+<meta property="og:description" content="Fotos e vídeos gratuitos do Festival Champagnat, do Colégio Marista Arquidiocesano.">
+<meta name="theme-color" content="#05122b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%231257c9'/%3E%3Ccircle cx='50' cy='50' r='24' fill='%23fff'/%3E%3Ccircle cx='50' cy='50' r='10' fill='%2305122b'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>try{if(sessionStorage.getItem('iris'))document.documentElement.classList.add('iris-cover')}catch(e){}</script>
 </head>
-<body>
+<body data-page="home">
 
-<header class="nav">
-  <a class="brand" href="#topo"><span class="logo">📷</span><span>Fotos do <b>Festival</b></span></a>
-  <nav>
-    <a href="#sobre">Sobre</a>
-    <a href="#equipamentos">Equipamentos</a>
-    <a href="#galeria">Fotos</a>
-    <a href="#pedir">Pedir foto</a>
-    <a href="#faq">Dúvidas</a>
-  </nav>
-  <a class="btn btn-sm" href="#pedir">Quero minha foto</a>
-</header>
-
-<main id="topo">
-
-<!-- ============ HERO ============ -->
+<main>
 <section class="hero">
-  <div class="embers" aria-hidden="true"></div>
-  <div class="hero-text">
-    <p class="kicker"><span class="dot"></span> <span data-cfg="evento">Festival Champagnat</span> · fotos gratuitas</p>
-    <h1>Seu momento no festival, <span class="fire">em foto</span>.</h1>
-    <p class="lead">Oi, eu sou <strong data-cfg="nome">Seu Nome</strong>, aluno do <strong>Marista Arquidiocesano</strong>. Vou estar pelo festival registrando o palco, as barracas e a galera. Se você aparece em alguma foto, <strong>é sua, de graça</strong>.</p>
-    <div class="cta">
-      <a class="btn" href="#galeria">Ver as fotos</a>
-      <a class="btn btn-ghost" href="#pedir">Como pedir a sua →</a>
-    </div>
-    <ul class="pills">
-      <li>🎟️ <span data-cfg="data">Data do festival</span></li>
-      <li>📍 <span data-cfg="local">Colégio Marista Arquidiocesano</span></li>
-      <li>💸 Sem custo</li>
-    </ul>
-  </div>
-
-  <!-- Visor de câmera interativo -->
-  <div class="cam" aria-label="Demonstração de um visor de câmera">
-    <div class="cam-top">
-      <span class="rec">● REC</span>
-      <span class="grow"></span>
-      <span class="bat" title="Bateria">🔋 <b>87%</b></span>
-    </div>
-    <div class="view" id="view">
-      <div class="scene">
-        <div class="sky"></div>
-        <div class="flags"></div>
-        <div class="bokeh"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="crowd"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <div>
+      <p class="tagline"><i></i> <span data-cfg="evento">Festival Champagnat</span> · <span data-cfg="data">Data do festival</span></p>
+      <h1 data-split>Cada quadro, <em>um pedaço</em> do festival.</h1>
+      <p class="lead">Oi, eu sou <strong data-cfg="nome">Leonardo Pulzi</strong>, aluno do <strong>Marista Arquidiocesano</strong>. Fotografei e filmei o festival de perto. Se você aparece em algum registro, ele é <strong>seu, de graça</strong>.</p>
+      <div class="cta">
+        <a class="btn" href="registros.html">Ver os registros</a>
+        <a class="btn ghost" href="pedir.html">Como pedir a sua →</a>
       </div>
-      <div class="focus" id="focus"><b></b></div>
-      <div class="grid3" aria-hidden="true"></div>
-      <div class="hud">
-        <span>ISO <b id="iso">400</b></span>
-        <span>f/<b id="ap">1.8</b></span>
-        <span><b id="sh">1/250</b></span>
-      </div>
-      <div class="toast" id="toast" role="status" aria-live="polite"></div>
-    </div>
-    <div class="cam-bar">
-      <span class="count">📸 <b id="shots">128</b> fotos</span>
-      <span class="grow"></span>
-      <button class="shutter" id="shutter" data-cursor="📸 clic">📸 Disparar</button>
-    </div>
-    <p class="cam-hint">Clica no botão ou aperta <kbd>Espaço</kbd>. É quase assim no dia.</p>
-  </div>
-</section>
-
-<!-- ============ NÚMEROS ============ -->
-<section class="stats">
-  <div><b id="statFotos">0</b><span>fotos na galeria</span></div>
-  <div><b>R$ 0</b><span>por foto, sempre</span></div>
-  <div><b>1</b><span>dia inteiro de festival</span></div>
-  <div><b>100%</b><span>feito por um aluno</span></div>
-</section>
-
-<!-- ============ SOBRE ============ -->
-<section id="sobre" class="section">
-  <h2 class="title">Quem está <span class="fire">por trás</span> da câmera</h2>
-  <div class="about">
-    <div class="portrait" id="portrait">
-      <img src="assets/eu.jpg" alt="" onerror="this.remove()">
-      <span class="ph">📷</span>
-    </div>
-    <div class="about-text">
-      <p class="who"><b data-cfg="nome">Seu Nome</b><span data-cfg="serie">3º ano · Ensino Médio</span></p>
-      <p>Sou aluno do Colégio Marista Arquidiocesano e gosto de fotografar o que acontece por aqui. O <strong data-cfg="evento">Festival Champagnat</strong> é o melhor dia do ano pra isso: tem cor, música, barraca cheia e um monte de gente rindo.</p>
-      <p>Não cobro nada pelas fotos. A ideia é que cada pessoa leve uma lembrança boa do festival. Ainda estou aprendendo, e cada clique é treino.</p>
-      <ul class="tags">
-        <li>🎤 Palco e apresentações</li>
-        <li>🍿 Barracas e comida</li>
-        <li>👥 Retratos e turma</li>
-        <li>✨ Momentos espontâneos</li>
+      <ul class="meta">
+        <li>📷 Nikon D3200</li>
+        <li>🎥 GoPro HERO12</li>
+        <li>💸 Sem custo</li>
       </ul>
     </div>
-  </div>
-</section>
 
-<!-- ============ EQUIPAMENTOS ============ -->
-<section id="equipamentos" class="section">
-  <h2 class="title">O que eu <span class="fire">levo na mochila</span></h2>
-  <div class="grid kit">
-    <article class="card big">
-      <div class="emoji">📷</div>
-      <span class="badge">Fotos</span>
-      <h3>Nikon D3200</h3>
-      <p>Minha câmera DSLR para as fotos: sensor de 24 MP, lente trocável e ótima para retratos, palco e momentos espontâneos.</p>
-    </article>
-    <article class="card big">
-      <div class="emoji">🎥</div>
-      <span class="badge">Vídeo</span>
-      <h3>GoPro HERO12 Black</h3>
-      <p>Para os vídeos: pequena, resistente e com estabilização, ela pega o festival de pertinho, sem perder a ação.</p>
-    </article>
-</section>
-
-<!-- ============ GALERIA ============ -->
-<section id="galeria" class="section">
-  <h2 class="title">Algumas <span class="fire">fotos</span></h2>
-  <div class="seg" id="filtros" role="tablist" aria-label="Categorias" hidden></div>
-  <div class="gallery" id="gallery"></div>
-  <p class="note" id="galNote"></p>
-</section>
-
-<!-- ============ COMO PEDIR ============ -->
-<section id="pedir" class="section">
-  <h2 class="title">Três passos. <span class="fire">Sério.</span></h2>
-  <ol class="steps">
-    <li>
-      <span class="n">1</span>
-      <h3>Procure você</h3>
-      <p>Dê uma olhada na galeria. Se achou sua foto, é só clicar nela e baixar. O álbum completo fica no Google Fotos.</p>
-      <p class="small">As fotos ficam em boa qualidade, prontas para o Instagram.</p>
-    </li>
-    <li>
-      <span class="n">2</span>
-      <h3>Não achou? Me avise</h3>
-      <p>Preencha o pedido abaixo com onde e quando você estava, e o que estava vestindo.</p>
-      <p class="small">Quanto mais detalhe, mais fácil de eu te encontrar nas fotos.</p>
-    </li>
-    <li>
-      <span class="n">3</span>
-      <h3>Receba pelo Google Fotos</h3>
-      <p>Eu respondo por e-mail ou Instagram com um <b>link do Google Fotos</b> para você ver e baixar as fotos.</p>
-      <p class="small">Sem cobrança e sem marca d'água.</p>
-    </li>
-  </ol>
-
-  <div class="contact">
-    <form class="form" id="form" novalidate>
-      <h3>Pedir minha foto</h3>
-      <label>Seu nome
-        <input name="nome" type="text" autocomplete="name" required placeholder="Como devo te chamar?">
-      </label>
-      <label>Seu e-mail ou @ do Instagram
-        <input name="contato" type="text" required placeholder="Para eu te responder">
-      </label>
-      <label>Onde e quando foi?
-        <input name="onde" type="text" placeholder="Ex.: perto do palco, no fim da tarde">
-      </label>
-      <label>Como você estava?
-        <textarea name="msg" rows="3" placeholder="Roupa, cor, com quem estava… qualquer detalhe ajuda."></textarea>
-      </label>
-      <button class="btn" type="submit">Enviar pedido</button>
-      <p class="small" id="formMsg" role="status" aria-live="polite">Ao enviar, abre o seu app de e-mail com o pedido pronto.</p>
-    </form>
-
-    <div class="channels">
-      <h3>Ou fale direto comigo</h3>
-      <a class="chan" id="lnkIg" href="#" target="_blank" rel="noopener" data-cursor="abrir">
-        <span class="ci">📸</span>
-        <span><b>Instagram</b><small>@<span data-cfg="instagram">seu_instagram</span></small></span>
-        <i>→</i>
-      </a>
-      <a class="chan" id="lnkMail" href="#" data-cursor="escrever">
-        <span class="ci">✉️</span>
-        <span><b>E-mail</b><small data-cfg="email">seuemail@gmail.com</small></span>
-        <i>→</i>
-      </a>
+    <div class="collage" id="collage" aria-label="Colagem de fotos">
+      <div class="pic p1" data-depth="14"><img alt=""><span></span></div>
+      <div class="pic p2" data-depth="-10"><img alt=""><span></span></div>
+      <div class="pic p3" data-depth="-16"><img alt=""><span></span></div>
+      <div class="pic p4" data-depth="12"><img alt=""><span></span></div>
+      <button class="shutter-btn" id="shutter" aria-label="Disparar: trocar as fotos"></button>
     </div>
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
-<section id="faq" class="section">
-  <h2 class="title">Dúvidas <span class="fire">comuns</span></h2>
-  <div class="faq">
-    <details>
-      <summary>As fotos realmente são de graça?</summary>
-      <p>Sim. Não cobro nada, e não tem pegadinha. É um projeto meu para o festival.</p>
-    </details>
-    <details>
-      <summary>Posso postar a foto no meu Instagram?</summary>
-      <p>Pode, e vou adorar se me marcar. Só peço que não use as fotos para vender nada nem altere a imagem de outras pessoas.</p>
-    </details>
-    <details>
-      <summary>Não gostei de uma foto minha. E agora?</summary>
-      <p>É só me avisar por e-mail ou Instagram que eu tiro da galeria. Sem drama.</p>
-    </details>
-    <details>
-      <summary>Como eu recebo as fotos?</summary>
-      <p>Por um link do Google Fotos. Eu te envio por e-mail ou Instagram, e você vê e baixa tudo por lá.</p>
-    </details>
-    <details>
-      <summary>Quando as fotos ficam prontas?</summary>
-      <p>Vou subindo aos poucos depois do festival, conforme eu for editando. Volte aqui ou me chame para saber.</p>
-    </details>
-    <details>
-      <summary>Posso pedir uma foto com a minha turma?</summary>
-      <p>Pode. Me procure no festival ou mande o pedido pelo formulário que a gente combina.</p>
-    </details>
+<div class="film" aria-label="Tira de filme com alguns registros"><div class="film-track" id="track"></div></div>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="stats" data-rv>
+      <div><b id="nFotos">0</b><span id="lFotos">registros na galeria</span></div>
+      <div><b id="nRolos">0</b><span>rolos (álbuns)</span></div>
+      <div><b>R$ 0</b><span>por registro, sempre</span></div>
+      <div><b>1<small>dia</small></b><span>de festival, quadro a quadro</span></div>
+    </div>
   </div>
 </section>
 
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head" data-rv>
+      <p class="eyebrow">Os rolos</p>
+      <h2>Escolha um <em>rolo</em> e comece a revelar.</h2>
+      <p>Cada álbum é um rolo de filme. Entre, favorite o que gostar e peça tudo de uma vez.</p>
+    </div>
+    <div class="rolls" id="rolls"></div>
+  </div>
+</section>
+
+<section class="light">
+  <div class="wrap">
+    <div class="sec-head" data-rv>
+      <p class="eyebrow">Como funciona</p>
+      <h2>Achar sua foto é <em>fácil</em>.</h2>
+    </div>
+    <ol class="steps">
+      <li data-rv><h3>Procure você</h3><p style="color:#46608f">Entre nos rolos e passe pelos quadros. Dá para ampliar, favoritar e até assistir em modo apresentação.</p></li>
+      <li data-rv><h3>Favorite</h3><p style="color:#46608f">Toque no coração das suas. Elas ficam salvas neste navegador, prontas para você pedir.</p></li>
+      <li data-rv><h3>Receba pelo Google Fotos</h3><p style="color:#46608f">Mande a lista por e-mail ou Instagram e eu te respondo com um link do Google Fotos.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="banner" data-rv>
+      <div>
+        <h2>Ficou de fora do <em>flash</em>?</h2>
+        <p>Me conte onde e quando você estava e como estava vestido. Eu procuro você nos quadros.</p>
+      </div>
+      <a class="btn gold" href="pedir.html">Pedir minha foto</a>
+    </div>
+  </div>
+</section>
 </main>
-
-<footer class="foot">
-  <span class="logo big">📷</span>
-  <p><b>Fotos do <span data-cfg="evento">Festival Champagnat</span></b> · feito por <span data-cfg="nome">Seu Nome</span>.</p>
-  <p class="small">Projeto de aluno, sem ligação oficial com o colégio.</p>
-  <p class="sig">Este site foi feito pelo <span>Claude Code</span>, inspirado no Kandidatos Screenshare. ✦</p>
-</footer>
-
-<!-- Lightbox -->
-<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
-  <button class="lb-x" id="lbX" aria-label="Fechar">✕</button>
-  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Anterior">‹</button>
-  <figure>
-    <img id="lbImg" alt="">
-    <figcaption>
-      <span id="lbCap"></span>
-      <a class="btn btn-sm" id="lbDl" href="#" download>⬇ Baixar</a>
-    </figcaption>
-  </figure>
-  <button class="lb-nav lb-next" id="lbNext" aria-label="Próxima">›</button>
-</div>
 
 <script src="config.js"></script>
 <script src="fotos.js"></script>
-<script src="script.js"></script>
+<script src="common.js"></script>
 <script src="cursor.js"></script>
+<script>
+(() => {
+  const { data, todas, count, renderRolls, openLightbox, calm } = FC;
+  // intercala os álbuns (1º de cada, 2º de cada…) para a colagem e a tira variarem
+  const inter = [];
+  for (let i = 0; inter.length < todas.length; i++) data.albuns.forEach((a) => { if (a.fotos[i]) inter.push(a.fotos[i]); });
+  const pool = inter.filter((f) => !f.video).length ? inter.filter((f) => !f.video) : inter;
+
+  // números
+  count(document.getElementById('nFotos'), todas.length);
+  count(document.getElementById('nRolos'), data.albuns.length);
+  if (data.exemplo) document.getElementById('lFotos').textContent = 'quadros de exemplo (troque pelos seus)';
+
+  // rolos
+  renderRolls(document.getElementById('rolls'), data.albuns);
+
+  // tira de filme
+  const track = document.getElementById('track');
+  const strip = pool.slice(0, 12);
+  const label = (f) => `▸ ${String(f.n).padStart(2, '0')}A · ${(data.albuns.find((a) => a.key === f.album) || {}).titulo || ''}`;
+  [0, 1].forEach((copy) => strip.forEach((f, i) => {
+    const d = document.createElement('div');
+    d.className = 'frame rv'; d.tabIndex = copy ? -1 : 0;
+    if (copy) d.setAttribute('aria-hidden', 'true');
+    d.innerHTML = `<img src="${f.src}" alt="${copy ? '' : 'Registro do festival'}" loading="lazy"><span>${label(f)}</span>`;
+    d.addEventListener('click', () => openLightbox(strip, i));
+    track.appendChild(d);
+  }));
+  FC.reveal([...track.children]);
+
+  // colagem + obturador
+  const pics = [...document.querySelectorAll('.collage .pic')];
+  let off = 0;
+  const paint = () => pics.forEach((p, i) => {
+    const f = pool[(off + i) % pool.length];
+    p.querySelector('img').src = f.src;
+    p.querySelector('span').textContent = label(f).replace('▸ ', '');
+    p.onclick = () => openLightbox(pool, (off + i) % pool.length);
+  });
+  paint();
+  const shutter = document.getElementById('shutter');
+  shutter.innerHTML = FC.APERTURE;
+  shutter.addEventListener('click', () => {
+    const fl = document.createElement('div'); fl.className = 'flash go'; document.body.appendChild(fl); setTimeout(() => fl.remove(), 500);
+    shutter.classList.remove('fire'); void shutter.offsetWidth; shutter.classList.add('fire');
+    pics.forEach((p, i) => { p.style.setProperty('--sx', (i % 2 ? -1 : 1) * 30 + 'px'); p.classList.remove('shuf'); void p.offsetWidth; p.classList.add('shuf'); });
+    setTimeout(() => { off = (off + 4) % pool.length; paint(); }, 280);
+    FC.toast('📸 Clique! Novas fotos reveladas');
+  });
+
+  // parallax da colagem
+  if (!calm) addEventListener('mousemove', (e) => {
+    const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
+    pics.forEach((p) => { const d = +p.dataset.depth; p.style.translate = `${x * d * 2}px ${y * d * 2}px`; });
+  }, { passive: true });
+})();
+</script>
 </body>
 </html>

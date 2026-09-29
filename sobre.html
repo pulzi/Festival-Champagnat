@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sobre e equipamentos · Fotos do Festival Champagnat</title>
+<meta name="description" content="Quem fotografou o Festival Champagnat e com o que: Nikon D3200 e GoPro HERO12 Black.">
+<meta name="theme-color" content="#05122b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%231257c9'/%3E%3Ccircle cx='50' cy='50' r='24' fill='%23fff'/%3E%3Ccircle cx='50' cy='50' r='10' fill='%2305122b'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>try{if(sessionStorage.getItem('iris'))document.documentElement.classList.add('iris-cover')}catch(e){}</script>
+</head>
+<body data-page="sobre">
+
+<main>
+<section class="wrap sec" style="padding-top:56px">
+  <div class="about">
+    <div class="portrait" data-rv data-cap="quadro 01A · eu">
+      <div class="in"><img src="assets/eu.jpg" alt="" onerror="this.remove()"><span>📷</span></div>
+    </div>
+    <div class="about-text" data-rv>
+      <p class="eyebrow">Sobre</p>
+      <p class="who"><b data-cfg="nome">Leonardo Pulzi</b><span data-cfg="serie">Aluno do Marista Arquidiocesano</span></p>
+      <p>Sou aluno do Colégio Marista Arquidiocesano e gosto de guardar o que acontece por aqui. O <strong data-cfg="evento">Festival Champagnat</strong> é o melhor dia do ano para isso: tem cor, música, barraca cheia e um monte de gente rindo.</p>
+      <p>Não cobro nada pelos registros. A ideia é que cada pessoa leve uma lembrança boa do festival. Estou sempre aprendendo, e cada clique é treino.</p>
+      <div class="tags">
+        <a class="chip" href="registros.html#palco">🎤 Palco</a>
+        <a class="chip" href="registros.html#barracas">🍿 Barracas</a>
+        <a class="chip" href="registros.html#turma">👥 Turma</a>
+        <a class="chip" href="registros.html#momentos">✨ Momentos</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="light">
+  <div class="wrap">
+    <div class="sec-head" data-rv>
+      <p class="eyebrow">Equipamentos</p>
+      <h2>O que eu levo <em>na mochila</em>.</h2>
+      <p>Clique nas cartas para virar e ver as especificações.</p>
+    </div>
+    <div class="gear">
+      <button class="flip" aria-pressed="false" data-rv>
+        <span class="flip-in">
+          <span class="face front">
+            <span class="big">📷</span>
+            <span class="badge">Fotos</span>
+            <h3>Nikon D3200</h3>
+            <p>Minha DSLR para as fotos: retratos, palco e momentos espontâneos, com lentes trocáveis.</p>
+            <span class="hint">clique para virar ↻</span>
+          </span>
+          <span class="face back">
+            <h4>Ficha técnica</h4>
+            <ul>
+              <li><span>Sensor</span><b>24,2 MP · APS-C (DX)</b></li>
+              <li><span>ISO</span><b>100 a 6400</b></li>
+              <li><span>Rajada</span><b>até 4 fotos/s</b></li>
+              <li><span>Vídeo</span><b>Full HD 1080p</b></li>
+              <li><span>Lentes</span><b>Montagem Nikon F</b></li>
+            </ul>
+          </span>
+        </span>
+      </button>
+      <button class="flip" aria-pressed="false" data-rv>
+        <span class="flip-in">
+          <span class="face front">
+            <span class="big">🎥</span>
+            <span class="badge">Vídeo</span>
+            <h3>GoPro HERO12 Black</h3>
+            <p>Para os vídeos: pequena, resistente e estabilizada. Pega o festival de pertinho, sem perder a ação.</p>
+            <span class="hint">clique para virar ↻</span>
+          </span>
+          <span class="face back">
+            <h4>Ficha técnica</h4>
+            <ul>
+              <li><span>Vídeo</span><b>até 5.3K a 60 fps</b></li>
+              <li><span>Fotos</span><b>27 MP</b></li>
+              <li><span>Estabilização</span><b>HyperSmooth 6.0</b></li>
+              <li><span>Resistência</span><b>à prova d'água até 10 m</b></li>
+              <li><span>Tamanho</span><b>cabe no bolso</b></li>
+            </ul>
+          </span>
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="banner" data-rv>
+      <div><h2>Viu seu <em>rosto</em> por aí?</h2><p>Dê uma olhada nos rolos e favorite o que for seu.</p></div>
+      <a class="btn gold" href="registros.html">Ver os registros</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<script src="config.js"></script>
+<script src="fotos.js"></script>
+<script src="common.js"></script>
+<script src="cursor.js"></script>
+<script>
+document.querySelectorAll('.flip').forEach((b) => b.addEventListener('click', () => {
+  const on = b.classList.toggle('on');
+  b.setAttribute('aria-pressed', on);
+}));
+</script>
+</body>
+</html>

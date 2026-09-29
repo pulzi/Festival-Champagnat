@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registros · Fotos do Festival Champagnat</title>
+<meta name="description" content="Todos os registros do Festival Champagnat em rolos: palco, barracas, turma, momentos e vídeos.">
+<meta name="theme-color" content="#05122b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%231257c9'/%3E%3Ccircle cx='50' cy='50' r='24' fill='%23fff'/%3E%3Ccircle cx='50' cy='50' r='10' fill='%2305122b'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>try{if(sessionStorage.getItem('iris'))document.documentElement.classList.add('iris-cover')}catch(e){}</script>
+</head>
+<body data-page="registros">
+
+<main class="wrap sec" style="padding-top:56px">
+
+  <div id="demo" class="demo-note" hidden>
+    <span>💡</span>
+    <span>Estas são <b>fotos de exemplo</b>. Coloque as suas na pasta <code>fotos</code> (uma subpasta por álbum) e rode o <code>atualizar-fotos.ps1</code> para trocá-las.</span>
+  </div>
+
+  <!-- Todos os rolos -->
+  <section id="hub">
+    <div class="sec-head">
+      <p class="eyebrow">Registros</p>
+      <h1 style="font-size:clamp(2.2rem,5vw,3.6rem)" data-split>Escolha um <em>rolo</em>.</h1>
+      <p>Cada rolo é um pedaço do festival. Toque no coração para guardar suas favoritas.</p>
+    </div>
+    <div class="rolls" id="rolls"></div>
+  </section>
+
+  <!-- Um rolo aberto (folha de contatos) -->
+  <section id="album" hidden>
+    <div class="crumbs">
+      <a class="chip" href="#">← Todos os rolos</a>
+      <span class="mono small" id="crumbNo"></span>
+    </div>
+    <div class="sec-head">
+      <p class="eyebrow" id="albEmoji"></p>
+      <h2 id="albTitle"></h2>
+      <p id="albDesc"></p>
+    </div>
+    <div class="toolbar" id="toolbar">
+      <button class="chip on" data-f="todas">Todos</button>
+      <button class="chip" data-f="fotos">📷 Fotos</button>
+      <button class="chip" data-f="videos">🎥 Vídeos</button>
+      <button class="chip" data-f="favs">♥ Só favoritas <b id="nFav">0</b></button>
+      <span class="grow"></span>
+      <button class="chip solid" id="slide">▶ Apresentação</button>
+    </div>
+    <div class="sheet" id="sheet"></div>
+    <div class="empty" id="empty" hidden>Nada por aqui ainda. Tente outro filtro.</div>
+    <p class="small" style="margin-top:22px">Clique numa foto para ampliar. Use as setas do teclado para navegar e <kbd style="border:1px solid #fff3;padding:0 6px;border-radius:4px">F</kbd> para favoritar.</p>
+  </section>
+</main>
+
+<script src="config.js"></script>
+<script src="fotos.js"></script>
+<script src="common.js"></script>
+<script src="cursor.js"></script>
+<script>
+(() => {
+  const { $, data, todas, favs, renderRolls, renderGrid, openLightbox, CFG } = FC;
+  const hub = $('#hub'), album = $('#album');
+  if (data.exemplo) $('#demo').hidden = false;
+  renderRolls($('#rolls'), data.albuns, true);
+
+  let list = [], filtro = 'todas', atual = null;
+  const nFav = () => { $('#nFav').textContent = list.filter((f) => FC.isFav(f.id)).length; };
+
+  function paint() {
+    let l = list;
+    if (filtro === 'fotos') l = list.filter((f) => !f.video);
+    if (filtro === 'videos') l = list.filter((f) => f.video);
+    if (filtro === 'favs') l = list.filter((f) => FC.isFav(f.id));
+    $('#empty').hidden = l.length > 0;
+    $('#sheet').hidden = l.length === 0;
+    renderGrid($('#sheet'), l);
+    $('#sheet').dataset.n = l.length;
+    $('#sheet')._list = l;
+    nFav();
+  }
+
+  function route() {
+    const key = decodeURIComponent(location.hash.slice(1));
+    if (!key) { hub.hidden = false; album.hidden = true; return; }
+    if (key === 'todos') atual = { key, titulo: 'Todos os registros', emoji: '🎞️', desc: 'Tudo junto, do começo ao fim do festival.', fotos: todas, no: '00' };
+    else {
+      const i = data.albuns.findIndex((a) => a.key === key);
+      if (i < 0) { location.hash = ''; return; }
+      atual = { ...data.albuns[i], no: String(i + 1).padStart(2, '0') };
+    }
+    list = atual.fotos; filtro = 'todas';
+    document.title = `${atual.titulo} · Fotos do ${CFG.evento || 'Festival'}`;
+    $('#albEmoji').textContent = `${atual.emoji} rolo ${atual.no}`;
+    $('#crumbNo').textContent = `${atual.fotos.length} quadros`;
+    $('#albTitle').textContent = atual.titulo;
+    $('#albDesc').textContent = atual.desc;
+    const temVideo = list.some((f) => f.video), temFoto = list.some((f) => !f.video);
+    $('[data-f=fotos]').hidden = !(temVideo && temFoto);
+    $('[data-f=videos]').hidden = !temVideo;
+    document.querySelectorAll('#toolbar [data-f]').forEach((b) => b.classList.toggle('on', b.dataset.f === 'todas'));
+    hub.hidden = true; album.hidden = false;
+    paint();
+    scrollTo({ top: 0 });
+  }
+
+  document.querySelectorAll('#toolbar [data-f]').forEach((b) => b.addEventListener('click', () => {
+    filtro = b.dataset.f;
+    document.querySelectorAll('#toolbar [data-f]').forEach((x) => x.classList.toggle('on', x === b));
+    paint();
+  }));
+  $('#slide').addEventListener('click', () => {
+    const l = $('#sheet')._list || list;
+    if (!l.length) return;
+    openLightbox(l, 0);
+    document.querySelector('.lb [data-a=play]').click();
+  });
+  document.addEventListener('favs', () => { if (!album.hidden) { nFav(); if (filtro === 'favs') paint(); } });
+  addEventListener('hashchange', route);
+  route();
+})();
+</script>
+</body>
+</html>
