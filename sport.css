@@ -51,5 +51,16 @@ body {
 
 .banner { background: linear-gradient(115deg, #0b3a99 0 46%, #041236 46% 100%); }
 
+/* sem branco forte no site: nada de "flashbang" */
+.pt-in.pt-p-pedir body::before { background: #02060f; }
+.pt-p-pedir .pt-bg { background: radial-gradient(70% 60% at 50% 50%, #0b2f74, #02060f 75%); }
+.pt-p-pedir .pt-box { color: #eaf1ff; }
+.pt-bar { background: #ffffff1f; }
+.flash { background: #1a4fb8; }
+@keyframes flashgo { 0% { opacity: .32; } 100% { opacity: 0; } }
+.toast { background: #0f2a5c; color: #eaf1ff; border: 1px solid #2f7bff66; }
+.collage .pic { border-color: #b7c6e2; background: #b7c6e2; }
+.portrait, .pt-pol { background: #b7c6e2; }
+
 @media (max-width: 760px) { .hero .ghost { font-size: 6.5rem; top: 30%; } }
 @media (prefers-reduced-motion: reduce) { .hero::before, .ticker-track { animation: none !important; } }
