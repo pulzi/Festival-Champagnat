@@ -265,7 +265,8 @@ em, .serif { font-family: var(--serif); font-style: italic; font-weight: 500; le
 
 /* ---------- CTA final ---------- */
 .banner { position: relative; overflow: hidden; border-radius: 26px; padding: 54px 44px; background: linear-gradient(135deg, var(--blue), #0a2f74 70%); display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
-.banner::after { content: ""; position: absolute; right: -80px; top: -80px; width: 320px; height: 320px; border-radius: 50%; border: 40px solid #ffffff14; }
+.banner > * { position: relative; z-index: 1; }
+.banner::after { content: ""; pointer-events: none; position: absolute; right: -80px; top: -80px; width: 320px; height: 320px; border-radius: 50%; border: 40px solid #ffffff14; }
 .banner h2 em { color: #fff; }
 .banner p { color: #d5e3ff; margin: 12px 0 0; max-width: 34em; }
 
