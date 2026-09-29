@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<script>try{if(sessionStorage.getItem('iris'))document.documentElement.classList.add('iris-cover')}catch(e){}</script>
+<script>try{var p=sessionStorage.getItem('pt');if(p){p=JSON.parse(p);document.documentElement.classList.add('pt-in','pt-p-'+p.p,'pt-d-'+p.d)}}catch(e){}</script>
 </head>
 <body data-page="pedir">
 

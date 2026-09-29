@@ -202,20 +202,40 @@
     cur = list; idx = i; show(); lb.hidden = false; document.body.style.overflow = 'hidden'; $('.lb-x', lb).focus();
   }
 
-  // ---------- Transição de página: o diafragma fecha, a página troca, o diafragma abre ----------
+
+  // ---------- Transições de página: cada destino tem a sua, e a direção segue a ordem do menu ----------
   const html = document.documentElement;
-  function irisEl(state) {
+  const ORDER = { home: 0, registros: 1, sobre: 2, pedir: 3 };
+  const persona = (path) => { const f = path.split('/').pop().replace(/\.html$/, ''); return ORDER[f] !== undefined ? f : 'home'; };
+  const here = page in ORDER ? page : 'home';
+  const TXT = {
+    home: `<span class="pt-ap">${APERTURE}</span><b>Início</b><small>abrindo o diafragma…</small>`,
+    registros: '<b>Registros</b><small>▸ passando o rolo…</small>',
+    sobre: '<span class="pt-pol"><i></i><em>Sobre</em></span>',
+    pedir: '<span class="pt-env">✉️</span><b>Pedir fotos</b><span class="pt-bar"><i></i></span>',
+  };
+  const OUT = { home: 640, registros: 800, sobre: 700, pedir: 680 };
+  function overlay(p, d, state) {
     const el = document.createElement('div');
-    el.className = `iris ${state}`; el.setAttribute('aria-hidden', 'true');
-    el.innerHTML = `<span class="ap-i">${APERTURE}</span><p>revelando…</p>`;
+    el.className = `pt pt-p-${p} pt-d-${d} ${state}`; el.setAttribute('aria-hidden', 'true');
+    const slats = Array.from({ length: 10 }, (_, i) => `<i style="--n:${d === 'r' ? i : 9 - i}"><b>${String(i + 1).padStart(2, '0')}A</b></i>`).join('');
+    el.innerHTML = `<div class="pt-bg"></div><div class="pt-slats">${slats}</div><div class="pt-box">${TXT[p]}</div>`;
     document.body.appendChild(el);
     return el;
   }
-  if (html.classList.contains('iris-cover')) {
-    const el = irisEl('open');
-    html.classList.remove('iris-cover');
-    try { sessionStorage.removeItem('iris'); } catch {}
-    setTimeout(() => el.remove(), 900);
+  const m1 = html.className.match(/pt-p-(\w+)/), m2 = html.className.match(/pt-d-(\w)/);
+  if (html.classList.contains('pt-in') && m1) {
+    const p = m1[1], d = m2 ? m2[1] : 'r';
+    const el = overlay(p, d, 'covered');
+    html.classList.add('pt-entering'); html.classList.remove('pt-in');
+    try { sessionStorage.removeItem('pt'); } catch {}
+    let opened = false;
+    const open = () => {
+      if (opened) return; opened = true;
+      el.classList.replace('covered', 'open');
+      setTimeout(() => { el.remove(); html.classList.remove('pt-entering', `pt-p-${p}`, `pt-d-${d}`); }, 1100);
+    };
+    requestAnimationFrame(() => requestAnimationFrame(open)); setTimeout(open, 90);
   }
   let leaving = null;
   document.addEventListener('click', (e) => {
@@ -226,11 +246,12 @@
     if (u.origin !== location.origin || u.protocol === 'mailto:' || (u.pathname === location.pathname && u.search === location.search)) return;
     e.preventDefault();
     if (leaving) return;
-    try { sessionStorage.setItem('iris', '1'); } catch {}
-    leaving = irisEl('close');
-    setTimeout(() => { location.href = u.href; }, 620);
+    const p = persona(u.pathname), d = ORDER[p] >= ORDER[here] ? 'r' : 'l';
+    try { sessionStorage.setItem('pt', JSON.stringify({ p, d })); } catch {}
+    leaving = overlay(p, d, 'close');
+    setTimeout(() => { location.href = u.href; }, OUT[p]);
   });
-  addEventListener('pageshow', (e) => { if (e.persisted && leaving) { leaving.remove(); leaving = null; } });
+  addEventListener('pageshow', (e) => { if (e.persisted && leaving) { leaving.remove(); leaving = null; try { sessionStorage.removeItem('pt'); } catch {} } });
 
   // ---------- Título que "revela" palavra por palavra ----------
   document.querySelectorAll('[data-split]').forEach((root) => {
