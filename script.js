@@ -167,15 +167,15 @@ form.addEventListener('submit', (e) => {
 // ---------- Progresso, topo e aparecer ao rolar ----------
 const root = document.documentElement;
 const bar = document.createElement('div'); bar.className = 'progress'; document.body.appendChild(bar);
-const top = document.createElement('button');
-top.className = 'to-top'; top.setAttribute('aria-label', 'Voltar ao topo'); top.dataset.cursor = '↑ topo'; top.textContent = '↑';
-top.addEventListener('click', () => scrollTo({ top: 0, behavior: calm ? 'auto' : 'smooth' }));
-document.body.appendChild(top);
+const toTop = document.createElement('button');
+toTop.className = 'to-top'; toTop.setAttribute('aria-label', 'Voltar ao topo'); toTop.dataset.cursor = '↑ topo'; toTop.textContent = '↑';
+toTop.addEventListener('click', () => scrollTo({ top: 0, behavior: calm ? 'auto' : 'smooth' }));
+document.body.appendChild(toTop);
 let ticking = false;
 function onScroll() {
   const max = root.scrollHeight - innerHeight;
   bar.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
-  top.classList.toggle('show', scrollY > innerHeight * 0.9);
+  toTop.classList.toggle('show', scrollY > innerHeight * 0.9);
   ticking = false;
 }
 addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
